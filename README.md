@@ -1,15 +1,13 @@
-# My Learning Notes on the Book "Build a Large Language Model (From Scratch)"
+# My Learning Notes on the book "Build a Large Language Model (From Scratch)" by Professor Raschka
 
 My Greatest Thanks to Professor Raschka, the author of this book.
 
 ## Useful Links
-
 - [The GitHub Repository from the Author](https://github.com/rasbt/LLMs-from-scratch)
 - [The Author's Blog](https://magazine.sebastianraschka.com/)
 - [The Author's Free Courses](https://sebastianraschka.com/teaching/)
 
 ## My Current Progress
-
 - ✅ Set Up (Using Conda)
 - ✅ Chapter 1: Understanding LLM
 - ⏳ Appendix A: Introduction to PyTorch
