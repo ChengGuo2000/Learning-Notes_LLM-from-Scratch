@@ -2,13 +2,13 @@
 
 My Greatest Thanks to Professor Raschka, the author of this book.
 
-### Useful Links
+## Useful Links
 
 - [The GitHub Repository from the Author](https://github.com/rasbt/LLMs-from-scratch)
 - [The Author's Blog](https://magazine.sebastianraschka.com/)
 - [The Author's Free Courses](https://sebastianraschka.com/teaching/)
 
-### My Current Progress
+## My Current Progress
 
 - ✅ Set Up (Using Conda)
 - ⏳ Chapter 1: Understanding LLM
