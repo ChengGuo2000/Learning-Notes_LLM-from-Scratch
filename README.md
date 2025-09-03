@@ -11,7 +11,7 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 ## My Current Progress
 
 - ✅ Set Up (Using Conda)
-- ⏳ Chapter 1: Understanding LLM
+- ✅ Chapter 1: Understanding LLM
 - ⏳ Appendix A: Introduction to PyTorch
 - ⏳ Chapter 2: Planning + Preparing Text
 - ⏳ Chapter 3: Attention Mechanism
