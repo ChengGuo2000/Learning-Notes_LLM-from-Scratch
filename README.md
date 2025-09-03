@@ -10,7 +10,7 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 
 ### My Current Progress
 
-- Set Up
+- Set Up (Option 2: Using Conda)
 - Appendix A: Introduction to PyTorch
 - Chapter 1: Introduction
 - Chapter 2: Planning + Preparing Text
