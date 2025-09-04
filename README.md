@@ -8,14 +8,14 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 - [The Author's Free Courses](https://sebastianraschka.com/teaching/)
 
 ## My Current Progress
-- ✅ Set Up (Using Conda)
+- ✅ Set Up (Using uv)
 - ✅ Chapter 1: Understanding LLM
-- ⏳ Appendix A: Introduction to PyTorch
+- 🧠 Appendix A: Introduction to PyTorch
 - ⏳ Chapter 2: Planning + Preparing Text
 - ⏳ Chapter 3: Attention Mechanism
 - ⏳ Chapter 4: Coding a LLM
 - ⏳ Chapter 5: Pretraining
-- ⏳ Chapter 6: Fine-tuning
+- ⏳ Chapter 6: Classification Fine-tuning
 - ⏳ Chapter 7: Instruction Fune-tuning
 - ⏳ Appendix D: Enhance the Training Function
 - ⏳ Appendix E: LoRA
