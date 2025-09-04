@@ -14,13 +14,13 @@
     - Pretraining
         - Develop a broad understanding of language.
         - Large corpus of raw text (no labels).
-        - Creating Base Model: text completion, limited few-shot capabilities.
-        - Self-supervised Learning: model generates its own labels from the input data.
+        - Creating a base model for text completion and limited few-shot capabilities.
+        - **Self-supervised Learning**: model generates its own labels from the input data.
     - Fine-Tuning
         - Train on smaller labeled datasets for specific tasks.
-        - Two varieties:
-            - **Instruction fine-tuning**: the labeled dataset consists of instruction and answer pairs.
+        - Two varieties
             - **Classification fine-tuning**: the labeled dataset consists of texts and associated class labels.
+            - **Instruction fine-tuning**: the labeled dataset consists of instruction and answer pairs.
         - LLMs fine-tuned on custom datasets can outperform general LLMs on specific tasks.
 
 ## Transformer
@@ -33,7 +33,7 @@
         - Enhancing the model's ability to generate coherent and contextually relevant output.
 - **BERT**: Bidirectional Encoder Representations from Transformers
     - Built upon the original transformer's encoder submodule.
-    - Masked Word Prediction: predicts masked or hidden words in a given sentence.
+    - **Masked Word Prediction**: predicts masked or hidden words in a given sentence.
         - Strength in text classification
 - **GPT**: Generative Pretrained Transformers
     - Focuses on the decoder submodule.
@@ -45,7 +45,7 @@
 - We will pretrain an LLM, and also learn how to reuse only available model weights and load them into the architecture we will implement, so that we can skip the expensive pretraining stage.
 
 ## GPT
-- Next-word prediction: self-supervised learning, which is a form of self-labeling.
+- **Next-word prediction**: self-supervised learning, which is a form of self-labeling.
     - We can use the next word as the label that the model is supposed to predict.
 - Just a decoder part of the original transformer.
 - **Autoregressive model**: incorporates their previous outputs as inputs for future predictions.
