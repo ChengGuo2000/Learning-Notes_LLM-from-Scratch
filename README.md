@@ -19,3 +19,6 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 - ⏳ Chapter 7: Instruction Fune-tuning
 - ⏳ Appendix D: Enhance the Training Function
 - ⏳ Appendix E: LoRA
+
+## Note
+- Run `source .venv/bin/activate` to activate the virtual environment.
