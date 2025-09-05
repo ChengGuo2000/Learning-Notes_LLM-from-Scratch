@@ -22,3 +22,4 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 
 ## Note
 - Run `source .venv/bin/activate` to activate the virtual environment.
+- I am using a MacBook Air A1466 from 2015. It installed PyTorch version 2.2.2 for Intel macOS. My laptop does not have a compatible GPU, and it does not have an Apple Silicon chip.
