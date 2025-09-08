@@ -22,6 +22,23 @@
 
 ## Automatic Differentiation (autograd)
 - **Computational graph**: a directed graph that allows us to express and visualize mathematical expressions. In DL, it lays out the sequence of calculations needed to compute the output of a NN, and computes the reqired gradients for backprop.
+- If we carry out computations in PyTorch, it iwll build a computational graph internally by default if one of its terminal nodes has the `requires_grad` attribute set to **True**.
+- **Gradient**: a vector containing all of the partial derivatives of a multivariate function.
+- The `.backward()` method will let PyTorch compute the gradients of all leaf nodes in the graph, which will be stored via the tensors' `.grad` attributes.
+
+## Implementing NN
+- Subclass the `torch.nn.Module` class to define custon NN. The `Module` base class has lots of functionality, including encapsulate layers and operations and keep track of the model's parameters.
+- Define the network layers in the `__init__` constructor and specify how the layers interact in the forward method.
+- The forward method describes how the input data passes through the network and comes together as a computation graph.
+- The backward method are not needed to implement by ourselves.
+- `torch.nn.Linear` layers are the **feedforward** or **fully connected** layers.
+- Each parameter for which `requires_grad=True` counts as a trainable parameter and will be updated during training, which is default for weights and biases in `torch.nn.Linear`.
+- Initializing model weights with small random numbers is desired to *break symmetry* during training.
+- `grad_fn=<AddmmBackward0>` means that the tensor was created via a matrix multiplication and addition operation.
+- **Addmm** stands for matrix multiplication (**mm**) followed by an addition (**Add**).
+- `torch.no_grad()` is used when we use the network without training or backprop, when we use it for prediction and inference after training.
+- Commonly, we return the outputs of the last layer (**logits**) without passing them to a nonlinear activation function.
+- PyTorch's commonly used loss functions combine the **softmax** (or **sigmoid** for binary classification) operation with the negative log-likelihood loss in a single class for numerical efficiency and stability.
 
 ## Useful Links
 - [PyTorch Website](https://pytorch.org/)
