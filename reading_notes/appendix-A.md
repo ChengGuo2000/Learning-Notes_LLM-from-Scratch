@@ -40,6 +40,19 @@
 - Commonly, we return the outputs of the last layer (**logits**) without passing them to a nonlinear activation function.
 - PyTorch's commonly used loss functions combine the **softmax** (or **sigmoid** for binary classification) operation with the negative log-likelihood loss in a single class for numerical efficiency and stability.
 
+
+## Dataset and DataLoader
+- A custom `Dataset` class contains the three main components.
+    - `__init__`: setting up attributes to access later (file paths, file objects, database connectors).
+    - `__getitem__`: returning exactly one item from the dataset via an `index`, which is the features and class label for a single instance.
+    - `__len__`: retrieving the length of the dataset.
+- A **training epoch** is when the `train_loader`iterates over the training dataset, visiting each training example exactly once.
+- Having a substantially smaller batch as the last batch can disturb the convergence, so to prevent this, we set `drop_last=True`.
+- `num_workers` in `DataLoader` is crucial for parallelizing data loading and preprocessing.
+    - **Set to 0**: data loading will be done in the main process and not in separate worker processes. This may lead to significant slowdowns
+    - **Set to a number > 0**: multiple worker processes are launched to load data in parallel, freeing the main process to focus on training, better utilizing resources. But it is not optimal when working with very small datasets or on Jupyter notebooks because it may lead to overhead or crashes.
+    - `num_workers=4` usually leads to optimal performance in real-world datasets.
+
 ## Useful Links
 - [PyTorch Website](https://pytorch.org/)
 - [Papers With Code - Trends](https://paperswithcode.com/trends)
