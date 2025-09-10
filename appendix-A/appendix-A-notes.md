@@ -15,10 +15,12 @@
 - Tensors serve as data containers, hold multidimensional data, each dimension represents a different feature.
 - A 32-bit floating-point number offers sufficient precision for most DL tasks while consuming less memory and computational resources. GPU architectures are optimized for 32-bit computations.
 - Reshaping tensors
-    - **.view()** requires the original data to be continguous and will fail if it isn't.
-    - **.reshape()** will work regardless, copying the data if necessary to ensure the desired shape.
-- **.T** is for transposing a tensor, fillping it across its diagonal.
-- Matrix Multiplication with **.matmul()** or the **@** operator.
+    - `.view()` requires the original data to be continguous and will fail if it isn't.
+    - `.reshape()` will work regardless, copying the data if necessary to ensure the desired shape.
+- `.T` is for transposing a tensor, fillping it across its diagonal.
+- Matrix Multiplication with `.matmul()` or the `@` operator.
+- `.item()` returns the value of the tensor as a Python float.
+- PyTorch's `argmax` function returns the index position of the highest value in each row if `dim=1`, and return the highest value in each column if `dim=0`.
 
 ## Automatic Differentiation (autograd)
 - **Computational graph**: a directed graph that allows us to express and visualize mathematical expressions. In DL, it lays out the sequence of calculations needed to compute the output of a NN, and computes the reqired gradients for backprop.
@@ -38,8 +40,8 @@
 - **Addmm** stands for matrix multiplication (**mm**) followed by an addition (**Add**).
 - `torch.no_grad()` is used when we use the network without training or backprop, when we use it for prediction and inference after training.
 - Commonly, we return the outputs of the last layer (**logits**) without passing them to a nonlinear activation function.
-- PyTorch's commonly used loss functions combine the **softmax** (or **sigmoid** for binary classification) operation with the negative log-likelihood loss in a single class for numerical efficiency and stability.
-
+- PyTorch's commonly used loss functions combine the `softmax` (or `sigmoid` for binary classification) operation with the negative log-likelihood loss in a single class for numerical efficiency and stability.
+- Call `softmax` explicitly if computing class-membership probabilities.
 
 ## Dataset and DataLoader
 - A custom `Dataset` class contains the three main components.
@@ -52,6 +54,15 @@
     - **Set to 0**: data loading will be done in the main process and not in separate worker processes. This may lead to significant slowdowns
     - **Set to a number > 0**: multiple worker processes are launched to load data in parallel, freeing the main process to focus on training, better utilizing resources. But it is not optimal when working with very small datasets or on Jupyter notebooks because it may lead to overhead or crashes.
     - `num_workers=4` usually leads to optimal performance in real-world datasets.
+
+## Train a NN
+- `model.train()` and `model.eval()` are settings that put the model into a training and an evaluation mode. It is necessary for components that behave differently during training and inference, like **dropout** or **batch normalization** layers. It is best practice to include them all the time.
+- `loss.backward()` will calculate the gradients in the computation graph in the background.
+- `optimizer.step()` use the gradients to update the model parameters to minimize the loss. In SGF optimizer, it multiplies the gradients with the learning rate and adding the scaled negative gradient to the parameters.
+- `optimizer.zero_grad()` is important for preventing undesired gradient accumulation, so we must call it in each update round.
+- The `compute_accuracy` function (implemented in section A.7) is a general method that scales to datasets of arbitrary size since, in each iteration, the dataset chunk that the model receives is the same size as the batch size seen during training.
+- `model.state_dict()` is a Python dict that maps each layer in the model to its trainable parameters (weights and biases).
+- `model.load_state_dict()` applies the parameters obtained from the reconstruction of the Python dict.
 
 ## Useful Links
 - [PyTorch Website](https://pytorch.org/)
