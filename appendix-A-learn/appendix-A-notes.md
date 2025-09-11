@@ -64,6 +64,14 @@
 - `model.state_dict()` is a Python dict that maps each layer in the model to its trainable parameters (weights and biases).
 - `model.load_state_dict()` applies the parameters obtained from the reconstruction of the Python dict.
 
+## Training on GPU
+- To train on GPU, we simply need to change three lines of code.
+    - `device = torch.device("cuda")`: define a device variable that defaults to a GPU.
+    - `model = model.to(device)`: transfer the model onto the GPU.
+    - `features, labels = features.to(device), labels.to(device)`: transfer the data onto the GPU.
+- If a GPU is unavailable, try writing `device = torch.device("cuda" if torch.cuda.is_available() else "cpu")`.
+- I cannot access multiple GPUs, so I will skip section A.9.3 in the Appendix A.
+
 ## Useful Links
 - [PyTorch Website](https://pytorch.org/)
 - [Papers With Code - Trends](https://paperswithcode.com/trends)
@@ -72,3 +80,4 @@
 - [Supplementary Code for Exercise A.2](https://mng.bz/o05v)
 - [Scientific Computing in Python: Introduction to NumPy and Matplotlib](https://sebastianraschka.com/blog/2020/numpy-intro.html)
 - [PyTorch's Official Documentation on different tensor data types](https://docs.pytorch.org/docs/stable/tensors.html)
+- [Alternative PyTorch APIs for multi-GPU training](https://magazine.sebastianraschka.com/p/accelerating-pytorch-model-training)
