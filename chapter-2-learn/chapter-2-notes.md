@@ -20,5 +20,19 @@
 - GPT only uses `<|endoftext|>` tokens for simplicity, which is analogous to `[EOS]` and can also be used for padding. It also doesn't use `<|unk|>` tokens, instead using **byte pair encoding** tokenizer.
 - We will use mask, meaning we don't addtend to padded tokens, so the specific token chosen for padding is inconsequential.
 
+## Byte Pair Encoding (BPE)
+- The BPE tokenizer used in training GPT-2 and GPT-3 has a total vocab size of 50257. 
+- The BPE algorithm breaks down words that aren't in its predefined vocabulary into smaller subword units or even individual characters, enabling it to handle out-of-vocab words. This ability of break down allows trained LLM to process any texts.
+- BPE builds its vocabulary by iteratively merging frequent characters into subwords, then into words.
+- It starts with adding all individual single characters into vocab, then it merge character combinations that frequently occur together into subwords, like merging "d" and "e" into "de".
+
+## Data Sampling and Token Embeddings
+- Most LLMs train with input sizes (`max_length`) of at least 256.
+- The `stride` setting dictates the number of positions the input shift across batches, emulating a sliding window approach.
+- Small batch sizes require less memory during training but lead to more noisy model updates. `batch_size` is a tradeoff and a hyperparameter to experiment with when training LLMs.
+- The weight matrix of the embedding layer contains small, random values, which are optimized during LLM training. 
+
 ## Useful Links
 - ["The Pit and the Pendulum" by Edgar Allan Poe on Wikisource](https://en.wikisource.org/wiki/The_Works_of_the_Late_Edgar_Allan_Poe_(1850)/Volume_1/The_Pit_and_the_Pendulum): I chose this short story for text preprocessing to get some different results from using "The Verdict" by Edith Wharton.
+- [Tiktoken - Python open source library for BPE](https://github.com/openai/tiktoken)
+- [One-hot encoding followed by matrix multiplication in a fully connected layer](https://github.com/rasbt/LLMs-from-scratch/tree/main/ch02/03_bonus_embedding-vs-matmul)
