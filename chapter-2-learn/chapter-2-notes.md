@@ -26,11 +26,15 @@
 - BPE builds its vocabulary by iteratively merging frequent characters into subwords, then into words.
 - It starts with adding all individual single characters into vocab, then it merge character combinations that frequently occur together into subwords, like merging `d` and `e` into `de`.
 
-## Data Sampling and Token Embeddings
+## Data Sampling, Token Embeddings, and Positional Embeddings
 - Most LLMs train with input sizes (`max_length`) of at least 256.
 - The `stride` setting dictates the number of positions the input shift across batches, emulating a sliding window approach.
 - `batch_size` is a tradeoff and a hyperparameter to experiment with when training LLMs. Small batch sizes require less memory during training but lead to more noisy model updates.
-- The weight matrix of the embedding layer contains small, random values, which are optimized during LLM training. 
+- The **weight matrix** of the embedding layer contains small, random values, which are optimized during LLM training. 
+- LLM's **self-attention mechanism** doesn't have a notion of position or order for the tokens within a sequence.
+- **Absolute positional embeddings**: directly associated with specific positions in a sequence. For each position in the input sequence, a unique embedding is added to the token's embedding to convey its exact location.
+- **Relative positional embeddings**: on the relative position or distance between tokens. The model learns the relationships in terms of "how far apart", so that it can generalize better to sequence of varying lengths.
+- GPT models use absolute positional embeddings that are optimized during the training process rather than being fixed or predefined like the positional encodings in the original transformer model.
 
 ## Useful Links
 - ["The Pit and the Pendulum" by Edgar Allan Poe on Wikisource](https://en.wikisource.org/wiki/The_Works_of_the_Late_Edgar_Allan_Poe_(1850)/Volume_1/The_Pit_and_the_Pendulum): I chose this short story for text preprocessing to get some different results from using "The Verdict" by Edith Wharton.

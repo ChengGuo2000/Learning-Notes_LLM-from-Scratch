@@ -11,8 +11,8 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 - ✅ Set Up (Using uv)
 - ✅ Chapter 1: Understanding LLM
 - ✅ Appendix A: Introduction to PyTorch
-- 🧠 Chapter 2: Planning + Preparing Text
-- ⏳ Chapter 3: Attention Mechanism
+- ✅ Chapter 2: Planning + Preparing Text
+- 🧠 Chapter 3: Attention Mechanism
 - ⏳ Chapter 4: Coding a LLM
 - ⏳ Chapter 5: Pretraining
 - ⏳ Chapter 6: Classification Fine-tuning
