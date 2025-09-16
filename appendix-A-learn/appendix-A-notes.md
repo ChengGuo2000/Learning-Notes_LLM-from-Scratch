@@ -35,7 +35,7 @@
 - The backward method are not needed to implement by ourselves.
 - `torch.nn.Linear` layers are the **feedforward** or **fully connected** layers.
 - Each parameter for which `requires_grad=True` counts as a trainable parameter and will be updated during training, which is default for weights and biases in `torch.nn.Linear`.
-- Initializing model weights with small random numbers is desired to *break symmetry* during training.
+- Initializing model weights with small random numbers is desired to **break symmetry** during training.
 - `grad_fn=<AddmmBackward0>` means that the tensor was created via a matrix multiplication and addition operation.
 - **Addmm** stands for matrix multiplication (**mm**) followed by an addition (**Add**).
 - `torch.no_grad()` is used when we use the network without training or backprop, when we use it for prediction and inference after training.
