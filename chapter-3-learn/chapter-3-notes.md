@@ -15,6 +15,11 @@
 - The **self** refers to the ability to compute attention weights by relating different positions within a single input sequence, in contrast to traditional attention mechanisms where the focus is on the relationships between elements of two different sequences.
 - A **context vector** can be interpreted as an enriched embedding vector. The goal of self-attention is to compute a context vector for each input element in the input sequence that combines information from all other input elements.
 - A **dot product** is essentially a concise way of multiplying two vectors element-wise and then summing the products. It is also a measure of similarity because it quantifies how closely two vectors are aligned. A higher dot product indicates a greater degree of alignment or similarity between the vectors. In self-attention mechanisms, the higher the dot product, the higher the similarity and attention score between two elements.
+- The workflow for computing **context vectors** in the simplified version of self-attention:
+    - Compute **attention scores**: the dot products between the inputs.
+    - Conpute **attention weights**: a normalized version of the attention scores using softmax.
+    - Compute **context vectors**: multiplying the embedded input tokens x^i with the corresponding attnetion weights and then summing the resulting vectors.
+- The `dim = -1` in softmax applies the normalization along the last dimension of the tensor. For example, if `attention_scores` is a 2D tensor of [rows, colmns], then it will normalize across the columns so that the values in each row sum up to 1.
 
 ## Useful Links
 - [Attention is All You Need (2017)](https://arxiv.org/pdf/1706.03762)
