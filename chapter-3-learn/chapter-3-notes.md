@@ -33,6 +33,7 @@
 - When computing **attention weights**, we scale the **attention scores** by dividing them by the square root of the embedding dimension of the keys, then apply softmax.
 - The reason for the **normalization by the embedding dimension size** is to improve the training performance by avoiding small gradients. As the dot products increase, the softmax function behaves more like a step function, resulting in gradients nearing zero, which can drastically slow down learning or cause training to stagnate. That is also why this is mechanism is called **scaled dot-product attention**.
 - The final step of the **self-attention computation** is to compute the **context vector** by combining all value vectors via the attention weights.
+- A significant advantage of using `nn.Linear` instead of manually implemting `nn.Parameter(torch.rand(...))` is that `nn.Linear` has an optimized weight initialization scheme, contributing to more stable and effective model training.
 
 ## Useful Links
 - [Attention is All You Need (2017)](https://arxiv.org/pdf/1706.03762)
