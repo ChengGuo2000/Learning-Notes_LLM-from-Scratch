@@ -35,6 +35,18 @@
 - The final step of the **self-attention computation** is to compute the **context vector** by combining all value vectors via the attention weights.
 - A significant advantage of using `nn.Linear` instead of manually implemting `nn.Parameter(torch.rand(...))` is that `nn.Linear` has an optimized weight initialization scheme, contributing to more stable and effective model training.
 
+## Causal Attention
+- **Causal Attention**, also known as **masked attention**, is a specialized form of self-attention which restricts a model to only consider previous and current inputs in a sequence when processing any given token when computing attention scores, because in many LLM tasks, we want the self-attention mechanism to consider only the tokens that appear prior to the current position when predicting the next token in a sequence.
+- PyTorch's `torch.tril()` function allows us creating a mask where the values above the diagonal are zero.
+- The softmax function convers its inputs into a probability distribution. When negative infinity values are present in a row, the softmax function treats them as zero probability. We can implement an efficient masking trick by creating a mask with 1s with negative infinity values.
+- **Dropout** in DL is a technique where randomly selected hidden layer units are ignored during training, which helps prevent overfitting by ensuring that a model does not become overly reliant on any specific set of hidden layer units. It is only used in training and is disabled afterward.
+- **Dropout** in attention mehanism is typically applied at two specific times:
+    - after calculating the attention weights (more common in practice).
+    - after applying the attention weights to the value vectors.
+- The values of the remaining elements in the matrix are scaled up, which is crucial to maintain the overall balance of the attention weights, ensuring that the average influence of the attention mechanism remains consistent during both the training and inference phases.
+- The use of `register_buffer` in PyTorch automatically moves buffers to the appropriate device (CPU or GPU) when working with causal attention, eliminating the need to manually ensure that these tensors are on the same device as your model parameters, thereby preventing device mismatch errors.
+
 ## Useful Links
 - [Attention is All You Need (2017)](https://arxiv.org/pdf/1706.03762)
 - [Bahdanau Attention Mechansim for RNNs (2014)](https://arxiv.org/pdf/1409.0473)
+- [Different Dropout Behavior](https://github.com/pytorch/pytorch/issues/121595)
