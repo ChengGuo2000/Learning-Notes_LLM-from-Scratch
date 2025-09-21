@@ -35,7 +35,7 @@
 - The final step of the **self-attention computation** is to compute the **context vector** by combining all value vectors via the attention weights.
 - A significant advantage of using `nn.Linear` instead of manually implemting `nn.Parameter(torch.rand(...))` is that `nn.Linear` has an optimized weight initialization scheme, contributing to more stable and effective model training.
 
-## Causal Attention
+## Causal Attention and Multi-head Attention
 - **Causal Attention**, also known as **masked attention**, is a specialized form of self-attention which restricts a model to only consider previous and current inputs in a sequence when processing any given token when computing attention scores, because in many LLM tasks, we want the self-attention mechanism to consider only the tokens that appear prior to the current position when predicting the next token in a sequence.
 - PyTorch's `torch.tril()` function allows us creating a mask where the values above the diagonal are zero.
 - The softmax function convers its inputs into a probability distribution. When negative infinity values are present in a row, the softmax function treats them as zero probability. We can implement an efficient masking trick by creating a mask with 1s with negative infinity values.
@@ -45,9 +45,11 @@
     - after applying the attention weights to the value vectors.
 - The values of the remaining elements in the matrix are scaled up, which is crucial to maintain the overall balance of the attention weights, ensuring that the average influence of the attention mechanism remains consistent during both the training and inference phases.
 - The use of `register_buffer` in PyTorch automatically moves buffers to the appropriate device (CPU or GPU) when working with causal attention, eliminating the need to manually ensure that these tensors are on the same device as your model parameters, thereby preventing device mismatch errors.
-
-## Multi-head Attention
-- The term "**multi-head**" refers to dividing the attention mechanism into multiple "heads", each operating independently. A single causal attention module can be considered single-head attention, where there is only one set of attention weights processing the input sequentially. Basically, we are running the attention mechanism multiple times (in parallel) with different, learned linear projections.
+- The term "**multi-head**" refers to dividing the attention mechanism into multiple "**heads**", each operating independently. A single causal attention module can be considered single-head attention, where there is only one set of attention weights processing the input sequentially. Basically, we are running the attention mechanism multiple times (in parallel) with different, learned linear projections.
+- A more efficient implementation of **multi-head attention** involves **batched matrix multiplications**.
+- The **smallest GPT-2** model (117 million parameters) has 12 attention heads and a context vector embedding size of 768.
+- The **largest GPT-2** model (1.5 billion parameters) has 25 attention heads and a context vector embedding size of 1600.
+- The embedding dizes of the token inputs and context embeddings are the same in GPT models (`d_in = d_out`).
 
 ## Useful Links
 - [Attention is All You Need (2017)](https://arxiv.org/pdf/1706.03762)
