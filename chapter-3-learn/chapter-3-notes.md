@@ -46,6 +46,9 @@
 - The values of the remaining elements in the matrix are scaled up, which is crucial to maintain the overall balance of the attention weights, ensuring that the average influence of the attention mechanism remains consistent during both the training and inference phases.
 - The use of `register_buffer` in PyTorch automatically moves buffers to the appropriate device (CPU or GPU) when working with causal attention, eliminating the need to manually ensure that these tensors are on the same device as your model parameters, thereby preventing device mismatch errors.
 
+## Multi-head Attention
+- The term "**multi-head**" refers to dividing the attention mechanism into multiple "heads", each operating independently. A single causal attention module can be considered single-head attention, where there is only one set of attention weights processing the input sequentially. Basically, we are running the attention mechanism multiple times (in parallel) with different, learned linear projections.
+
 ## Useful Links
 - [Attention is All You Need (2017)](https://arxiv.org/pdf/1706.03762)
 - [Bahdanau Attention Mechansim for RNNs (2014)](https://arxiv.org/pdf/1409.0473)
