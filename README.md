@@ -13,8 +13,8 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 - ✅ Appendix A: Introduction to PyTorch
 - ✅ Chapter 2: Planning + Preparing Text
 - ✅ Chapter 3: Attention Mechanism
-- 🧠 Chapter 4: Coding a LLM
-- ⏳ Chapter 5: LLM Pretraining
+- ✅ Chapter 4: Coding a LLM
+- 🧠 Chapter 5: LLM Pretraining
 - ⏳ Chapter 6: Classification Fine-tuning
 - ⏳ Chapter 7: Instruction Fune-tuning
 - ⏳ Appendix D: Enhance the Training Function

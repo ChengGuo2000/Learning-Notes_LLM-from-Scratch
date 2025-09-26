@@ -24,6 +24,21 @@
 - The **preservation of shape** throughout the transformer block architecture is not incidental but a crucial aspect of its design. This design enables its effective application across a wide range of sequence-to-sequence tasks, where each output vector directly corresponds to an input vector, maintaining a one-to-one relationship.
 - The output is a context vector that encapsulates information from the entire input sequence, which means while the physical dimension remain unchanged, the content of each output vector is re-encoded to integrate contextual information from across the entire input sequence.
 
+## Coding the GPT model
+- `numel()` method, short for number of elements, can help us collect the total number of parameters in the model's parameter tensors.
+- The current `GPTModel` implementation has output tensors with shape `[batch_size, num_token, vocab_size]`.
+- **Weight Tying** is used in the original GPT-2 architecture, which means that the original GPT-2 architecture reuses the weights from the token embedding layer in its output layer. Weight tying reduces the overall memory footprint and computational complexity of the model. While using separate token embedding and output layers results in better training and model performance.
+
+## Generating Text
+- The next-token generation process:
+    - In each step, the model outputs a matrix with vectors representing potential next tokens. 
+    - The last vector, which corresponding to the next token, is extracted and converted into a probability distribution vis the `softmax` function.
+    - Within the vector of probability scores, the index of the highest value is located, which translates to the token ID.
+    - This token ID is then decoded back into text, producing the next token in the sequence.
+    - Finally, this token is appended to the previous inputs, forming a new input sequence for the subsequent iteration. 
+- **Greedy Decoding** means that the model generates the most likely next token at each step.
+- The `.eval()` model disables random components like dropout, which are only used during training.
+
 ## Useful Links
 - [Language Models Are Unsupervised Multitask Learners](https://cdn.openai.com/better-language-models/language_models_are_unsupervised_multitask_learners.pdf)
 - [Lambda Labs](https://lambda.ai/)
