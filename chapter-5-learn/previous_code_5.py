@@ -1,5 +1,6 @@
 import torch
 import torch.nn as nn
+import tiktoken
 
 class LayerNorm(nn.Module):
     def __init__(self, emb_dim):
@@ -131,22 +132,24 @@ def generate_text_simple(model, idx, max_new_tokens, context_size):
     return idx
 
 def main():
-    GPT2_medium_config = {
+    GPT_CONFIG_124M = {
         "vocab_size": 50257,
         "context_length": 1024,
-        "emb_dim": 1024,
-        "n_heads": 16,
-        "n_layers": 24,
+        "emb_dim": 768,
+        "n_heads": 12,
+        "n_layers": 12,
         "drop_rate": 0.1,
         "qkv_bias": False
     }
-    medium_model = GPTModel(GPT2_medium_config)
-    medium_params = sum(p.numel() for p in medium_model.parameters())
-    medium_params_gpt2 = (medium_params - sum(p.numel() for p in medium_model.out_head.parameters()))
-    medium_size = medium_params * 4 / (1024 * 1024)
-    print(f"Total number of parameters for GPT-2 medium: {medium_params:,}")
-    print(f"Number of trainable parameters considering weight tying: {medium_params_gpt2:,}")
-    print(f"Total size of GPT-2 medium: {medium_size:.2f} MB")
+    model = GPTModel(GPT_CONFIG_124M)
+    tokenizer = tiktoken.get_encoding("gpt2")
+    start_context = input("Enter starting text: ")
+    encoded = tokenizer.encode(start_context)
+    encoded_tensor = torch.tensor(encoded).unsqueeze(0)
+    model.eval()
+    out = generate_text_simple(model = model, idx = encoded_tensor, max_new_tokens = 20, context_size = GPT_CONFIG_124M["context_length"])
+    decoded_text = tokenizer.decode(out.squeeze(0).tolist())
+    print(decoded_text)
     print("This code runs perfectly.")
 
 if __name__ == "__main__":
