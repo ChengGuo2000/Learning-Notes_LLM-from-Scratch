@@ -10,4 +10,9 @@
 - **Perplexity** is a meausre using alongside cross entropy loss that provides a more interpretable way to understand the uncertainty of a model in predicting the next token in a sequence. It measures how well the distribution predicted by the model matches the actual distribution of the words in the dataset. Similar to the loss, a lower perplexity indicates that the model predictions are closer to the actual distribution. It can be calculated as `perplexity = torch.exp(loss)`. It is more interpretable because it signifies the effective vocabulary size about which the model is uncertain at each step.
 - The cost of training a 7 billion parameter Llama 2 model requaires 184,320 GPU hours on expensive A100 GPUs, processing 2 trillion tokens. Running 8 * A100 cloud server on AWS costs around $30 per hour, so the total training cost is around $690,000.
 
+## Training an LLM
+- There are **eight** steps, starting with iterating over each epoch, processing batches, resetting gradients, calculating the loss and new gradients, and updating weights and concluding with monitoring steps like printing losses and generating text samples. One **epoch** is one complete pass over a training set. The number of batches is determined by the training set size divided by the size of each batch.
+- **Adam** optimizers are a popular choice for training DNN. We selected **AdamW** optimizer, which is a variant of **Adam** that improves the weight decay approach, which aims to minimize model complexity and prevent overfitting by penalizing larger weights. This adjustment allows **AdamW** to achieve more effective regularization and better generalization, thus it is frequently used in training LLMs.
+- Model memorizing the data is expected when working with a very, very small training dataset and training the model for multiple epochs. Usually, it is common to train a model on a much larger dataset for only one epoch.
+
 ## Useful Links
