@@ -15,5 +15,14 @@
 - **Adam** optimizers are a popular choice for training DNN. We selected **AdamW** optimizer, which is a variant of **Adam** that improves the weight decay approach, which aims to minimize model complexity and prevent overfitting by penalizing larger weights. This adjustment allows **AdamW** to achieve more effective regularization and better generalization, thus it is frequently used in training LLMs.
 - Model **memorizing** the data is expected when working with a very, very small training dataset and training the model for multiple epochs. Usually, it is common to train a model on a much larger dataset for only one epoch.
 
+## Decoding strategies to control randomness
+- **Decoding Stratigies** reduce training data memorization and increase the originality of the LLM-generated text. Two approaches are **temperature scaling** and **top-k sampling**.
+- For **Greedy Decoding**, we always sampled the token with the highest probability as the next token using `torch.argmax`, which means that the LLM will always generate the same outputs on the same context even if we try to generate multiple times.
+- We can replace `argmax` with a function that samples from a probability distribution using the `multinomial` function. We can further control the distribution and selection process via a concept called **temperature scaling**.
+- **Temperature scaling** divides the logits by a number greater than 0.
+    - **Temperatures** greater than 1 result in more uniformly distributed token probabilities, resulting in a distribution similar to uniform distribution.
+    - **Temperatures** smaller than 1 result in more confident (sharper or peaky) distributions, approaching the behavior of the `argmax` function.
+    - **Temperature** equal to 1 is the same as not using any temperature scaling. 
+
 ## Useful Links
 - [LLM Visualization](https://bbycroft.net/llm)
