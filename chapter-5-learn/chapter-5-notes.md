@@ -20,9 +20,11 @@
 - For **Greedy Decoding**, we always sampled the token with the highest probability as the next token using `torch.argmax`, which means that the LLM will always generate the same outputs on the same context even if we try to generate multiple times.
 - We can replace `argmax` with a function that samples from a probability distribution using the `multinomial` function. We can further control the distribution and selection process via a concept called **temperature scaling**.
 - **Temperature scaling** divides the logits by a number greater than 0.
-    - **Temperatures** greater than 1 result in more uniformly distributed token probabilities, resulting in a distribution similar to uniform distribution.
+    - **Temperatures** greater than 1 result in more uniformly distributed token probabilities, resulting in a distribution similar to uniform distribution, which leads to more diverse output, but may contain grammar mistakes.
     - **Temperatures** smaller than 1 result in more confident (sharper or peaky) distributions, approaching the behavior of the `argmax` function.
     - **Temperature** equal to 1 is the same as not using any temperature scaling. 
+- **Top-k Sampling** combined with probabilistic sampling and temperature scaling can improve the text generation results. In **top-k sampling**, we can restrict the sampled tokens to the top-k most likely tokens and exclude all other tokens from the selection process by masking their probability scores with a `-inf` mask. It replaces all the nonselected logits with negative infinity, so when computing softmax, the probability scores of all non-top-k tokens are 0 and the probabilities of top-k tokens sum up to 1.
+- Lower temperature and lower top-k can be applied when we need an accurate answer, like generating code or official documents. Higher temperature and higher top-k can be applied when we need creativity, like writing fictions. We can force deterministic behavior through settting top_k to None or 1 and setting temperature to None or 0.
 
 ## Useful Links
 - [LLM Visualization](https://bbycroft.net/llm)
