@@ -14,8 +14,8 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 - ✅ Chapter 2: Planning + Preparing Text
 - ✅ Chapter 3: Attention Mechanism
 - ✅ Chapter 4: Coding a LLM
-- 🧠 Chapter 5: LLM Pretraining
-- ⏳ Chapter 6: Classification Fine-tuning
+- ✅ Chapter 5: LLM Pretraining
+- 🧠 Chapter 6: Classification Fine-tuning
 - ⏳ Chapter 7: Instruction Fune-tuning
 - ⏳ Appendix D: Enhance the Training Function
 - ⏳ Appendix E: Fune-tuning with LoRA

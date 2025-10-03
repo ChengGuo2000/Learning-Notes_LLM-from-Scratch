@@ -12,8 +12,9 @@
 
 ## Training an LLM
 - There are **eight** steps, starting with iterating over each epoch, processing batches, resetting gradients, calculating the loss and new gradients, and updating weights and concluding with monitoring steps like printing losses and generating text samples. One **epoch** is one complete pass over a training set. The number of batches is determined by the training set size divided by the size of each batch.
-- **Adam** optimizers are a popular choice for training DNN. We selected **AdamW** optimizer, which is a variant of **Adam** that improves the weight decay approach, which aims to minimize model complexity and prevent overfitting by penalizing larger weights. This adjustment allows **AdamW** to achieve more effective regularization and better generalization, thus it is frequently used in training LLMs.
 - Model **memorizing** the data is expected when working with a very, very small training dataset and training the model for multiple epochs. Usually, it is common to train a model on a much larger dataset for only one epoch.
+- **Adam** optimizers are a popular choice for training DNN. We selected **AdamW** optimizer, which is a variant of **Adam** that improves the weight decay approach, which aims to minimize model complexity and prevent overfitting by penalizing larger weights. This adjustment allows **AdamW** to achieve more effective regularization and better generalization, thus it is frequently used in training LLMs.
+- Adaptive optimizers such as **AdamW** store additional parameters for each model weight. **AdamW** uses historical data to adjust learning rates for each model parameter dynamically. Without it, the optimizer resets, and the model may learn suboptimally or even fail to converge properly, which means it will lose the ability to generate coherent text. So, when saving a model's state_dict, we should also save the state_dict of the optimizer for future pretraining.
 
 ## Decoding strategies to control randomness
 - **Decoding Stratigies** reduce training data memorization and increase the originality of the LLM-generated text. Two approaches are **temperature scaling** and **top-k sampling**.
@@ -25,9 +26,6 @@
     - **Temperature** equal to 1 is the same as not using any temperature scaling. 
 - **Top-k Sampling** combined with probabilistic sampling and temperature scaling can improve the text generation results. In **top-k sampling**, we can restrict the sampled tokens to the top-k most likely tokens and exclude all other tokens from the selection process by masking their probability scores with a `-inf` mask. It replaces all the nonselected logits with negative infinity, so when computing softmax, the probability scores of all non-top-k tokens are 0 and the probabilities of top-k tokens sum up to 1.
 - Lower temperature and lower top-k can be applied when we need an accurate answer, like generating code or official documents. Higher temperature and higher top-k can be applied when we need creativity, like writing fictions. We can force deterministic behavior through settting top_k to None or 1 and setting temperature to None or 0.
-
-## Load pretrained weights
-- Adaptive optimizers such as **AdamW** store additional parameters for each model weight. **AdamW** uses historical data to adjust learning rates for each model parameter dynamically. Without it, the optimizer resets, and the model may learn suboptimally or even fail to converge properly, which means it will lose the ability to generate coherent text. So, when saving a model's state_dict, we should also save the state_dict of the optimizer for future pretraining.
 
 ## Useful Links
 - [LLM Visualization](https://bbycroft.net/llm)
