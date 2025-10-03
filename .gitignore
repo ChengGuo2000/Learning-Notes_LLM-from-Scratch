@@ -1,5 +1,6 @@
-# All PyTorch files
+# All new large files
 *.pth
+gpt2/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
