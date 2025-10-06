@@ -1,11 +1,8 @@
 # My Learning Notes on the book "Build a Large Language Model (From Scratch)" by Professor Raschka
 
-My Greatest Thanks to Professor Raschka, the author of this book.
-
-## Useful Links
-- [The GitHub Repository from the Author](https://github.com/rasbt/LLMs-from-scratch)
-- [The Author's Blog](https://magazine.sebastianraschka.com/)
-- [The Author's Free Courses](https://sebastianraschka.com/teaching/)
+## Get Started
+- My Greatest Thanks to Professor Raschka, the author of this book.
+- I am using a MacBook Air A1466 from 2015. It installed PyTorch version 2.2.2 for Intel macOS. My laptop does not have a compatible GPU, and it does not have an Apple Silicon chip.
 
 ## My Current Progress
 - ✅ Set Up (Using uv)
@@ -20,6 +17,7 @@ My Greatest Thanks to Professor Raschka, the author of this book.
 - ⏳ Appendix D: Enhance the Training Function
 - ⏳ Appendix E: Fune-tuning with LoRA
 
-## Note
-- Run `source .venv/bin/activate` to activate the virtual environment.
-- I am using a MacBook Air A1466 from 2015. It installed PyTorch version 2.2.2 for Intel macOS. My laptop does not have a compatible GPU, and it does not have an Apple Silicon chip.
+## Useful Links
+- [The Official GitHub Repository from the Author](https://github.com/rasbt/LLMs-from-scratch)
+- [The Author's Blog](https://magazine.sebastianraschka.com/)
+- [The Author's Free Courses](https://sebastianraschka.com/teaching/)
