@@ -9,6 +9,9 @@
 ## Adding a classification head
 - Since we are working with a dataset that contains texts of varying lengths, we are going to pad all messages to the length of the longest message in the dataset or batch, because if we truncate, it may reduce model performance. We can use `<|endoftext|>` as a padding token. We may truncate text for validation and test sets.
 - Instead of a single output node in traditional binary classification task, we make the output layer containing 2 nodes. Initially, the model's linear output layer mapped 768 hidden units to a vocabulary of 50,257 tokens, we replace this layer with a new output layer that maps the same 768 hidden units to just 2 classes.
+- In NN-based LMs, the lower layers generally capture basic structures and semantics applicable across a wide range of tasks and datasets. So, fune-tinung only the last layers, which are more specific to nuanced linguistic patterns and task-specific features, is often sufficient to adapt the model to new tasks. It is also more computationally efficient. 
+- Fine-tuning additional layers can noticeably improve the predictive performance of the model, so we will also configure the last transformer block and the final `LayerNorm` module to be trainable. 
+- We are particularly interested in the last output token only because given the causal attention mask setup, the last token in a sequence accumulates the most information since it is the only token with access to data from all the previous tokens. We will focus on this last token during the fine-tuning process.
 
 ## Useful Links
 - [Losses Learned — Optimizing Negative Log-Likelihood and Cross-Entropy in PyTorch](https://sebastianraschka.com/blog/2022/losses-learned-part1.html)
