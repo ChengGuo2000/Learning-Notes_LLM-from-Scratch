@@ -13,5 +13,8 @@
 - Fine-tuning additional layers can noticeably improve the predictive performance of the model, so we will also configure the last transformer block and the final `LayerNorm` module to be trainable. 
 - We are particularly interested in the last output token only because given the causal attention mask setup, the last token in a sequence accumulates the most information since it is the only token with access to data from all the previous tokens. We will focus on this last token during the fine-tuning process.
 
+## Classification Fine-tuning
+- When training a function, the only two distinctions from previous `train_model_simple` function is that we are now track the number of training examples seen (`examples_seen`) instead of the number of tokens, and we calculate the accuracy after each epoch instead of printing a sample text.
+
 ## Useful Links
 - [Losses Learned — Optimizing Negative Log-Likelihood and Cross-Entropy in PyTorch](https://sebastianraschka.com/blog/2022/losses-learned-part1.html)
