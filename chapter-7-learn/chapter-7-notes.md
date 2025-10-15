@@ -8,6 +8,7 @@
 - A **collate** function, employed by the PyTorch `DataLoader` class, is responsible for taking a list of individual data samples and merging them into a single batch that can be processed efficiently by the model during training. 
 - There are five steps involved in implementing the batching process, including applying the prompt template, using tokenization, adding padding tokens to ensure uniform length in each batch, creating target token IDs, and replacing `-100` placeholder tokens to mask padding tokens in the loss function.
 - The PyTorch `cross_entropy` function ignores targets labeled with `-100` in its default setting, so we can take advantage of this to ignore the additional end-of-text padding tokens that we used to pad the training examples to have the same length in each batch. We will only keep one `<|endofteext|>` for LLM to learn that a response is complete.
+- The `partial` function from the Python's `functools` standard library can create a new version of the function with some argument prefilled.
 
 ## Useful Links
 - [Instruction Tuning with Loss Over Instructions](https://arxiv.org/abs/2405.14394)
