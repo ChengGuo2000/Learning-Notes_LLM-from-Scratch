@@ -1,6 +1,6 @@
 # Chapter 7 Reading Notes
 
-## Instruction Fine-tuning
+## Prepare the Instruction dataset
 - Pre-trained LLMs can perform **text completion**, but they struggle with following specific instructions. **Instruction fine-tuning** involves training a model on a dataset where the input-output pairs are explicitly provided.
 - There are two prompt styles for instruction fine-tuning in LLMs.
     - The **Alpaca** style uses a structured format with defined sections for `instruction`, `input`, and `response`. The input section may be left as blank.
@@ -10,5 +10,9 @@
 - The PyTorch `cross_entropy` function ignores targets labeled with `-100` in its default setting, so we can take advantage of this to ignore the additional end-of-text padding tokens that we used to pad the training examples to have the same length in each batch. We will only keep one `<|endofteext|>` for LLM to learn that a response is complete.
 - The `partial` function from the Python's `functools` standard library can create a new version of the function with some argument prefilled.
 
+## Instruction Fine-tuning
+- We are using the medium-sized GPT-2 because the smallest sized one is too limited in capacity to achieve satisfactory results via instruction fine-tuning. Smaller models lack the necessary capacity to learn and retain the intricate patterns and nuanced behaviors required for high-quality instruction-following tasks.
+
 ## Useful Links
 - [Instruction Tuning with Loss Over Instructions](https://arxiv.org/abs/2405.14394)
+- [Stanford's Alpaca dataset](https://github.com/tatsu-lab/stanford_alpaca)
