@@ -12,7 +12,14 @@
 
 ## Instruction Fine-tuning
 - We are using the medium-sized GPT-2 because the smallest sized one is too limited in capacity to achieve satisfactory results via instruction fine-tuning. Smaller models lack the necessary capacity to learn and retain the intricate patterns and nuanced behaviors required for high-quality instruction-following tasks.
+- Evaluating the instruction-fine-tuned LLMs such as chatbots has multiple approaches:
+    - Short-answer and multiple-choice benchmarks, like the Measureing Massive Multitask Language Understanding (MMLU).
+    - Human preference comparison to other LLMs, like LMSYS chatbot arena.
+    - Automated conversational benchmarks, where another LLM is used to evaluate the responses, like AlpacaEval. 
 
 ## Useful Links
 - [Instruction Tuning with Loss Over Instructions](https://arxiv.org/abs/2405.14394)
 - [Stanford's Alpaca dataset](https://github.com/tatsu-lab/stanford_alpaca)
+- [MMLU Paper](https://arxiv.org/abs/2009.03300)
+- [LMSYS chatbot arena](https://lmarena.ai/)
+- [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/)
