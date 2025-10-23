@@ -17,9 +17,15 @@
     - Human preference comparison to other LLMs, like LMSYS chatbot arena.
     - Automated conversational benchmarks, where another LLM is used to evaluate the responses, like AlpacaEval. 
 
+## Using Ollama for Evaluation
+- Start Ollama with `ollama serve`.
+- Try the Llama 3 model with `ollama run llama3`.
+
 ## Useful Links
 - [Instruction Tuning with Loss Over Instructions](https://arxiv.org/abs/2405.14394)
 - [Stanford's Alpaca dataset](https://github.com/tatsu-lab/stanford_alpaca)
 - [MMLU Paper](https://arxiv.org/abs/2009.03300)
 - [LMSYS chatbot arena](https://lmarena.ai/)
 - [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/)
+- [Ollama](https://ollama.com/)
+- [llama.cpp](https://github.com/ggml-org/llama.cpp)
