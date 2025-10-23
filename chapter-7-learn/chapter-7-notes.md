@@ -16,10 +16,28 @@
     - Short-answer and multiple-choice benchmarks, like the Measureing Massive Multitask Language Understanding (MMLU).
     - Human preference comparison to other LLMs, like LMSYS chatbot arena.
     - Automated conversational benchmarks, where another LLM is used to evaluate the responses, like AlpacaEval. 
+- To further improve our model's performance, we can explore the following strategies:
+    - Adjusting the hyperparameters during fine-tuning (learning rate, batch size, number of epochs).
+    - Increasing the size of the training dataset.
+    - Diversifying the examples in the trainign dataset to cover a broader range of topics and styles.
+    - Experimenting with different prompts or instruction formats.
+    - Using a larger pretrained model. 
 
 ## Using Ollama for Evaluation
 - Start Ollama with `ollama serve`.
 - Try the Llama 3 model with `ollama run llama3`.
+- End the current Ollama session with `/bye`.
+
+## Conclusion
+- We finished implementing an LLM architecture, pretraining an LLM, and fine-tuning it for specific tasks. 
+- One optional step after instruction fine-tuning is **preference fine-tuning**, which is particularly useful for customizing a model to better align with specific user preferences. 
+- The field of AI and LLM research is evolving rapidly, here are some ways to keep up with the latest advancements:
+    - Explore recent research papers on **arXiv**.
+    - Check the author's blog.
+    - Many researchers and practitioners are very active in sharing and discussing the latest developments on social media on X and Reddit, like the subreddit `r/LocalLLaMA`, which is a good resource for connecting with the community and staying informed.
+- We can also utilize different and more powerful LLMs for real-world applications, including **Axolotl** and **LitGPT**.
+- Building an LLM from scratch is the most effective way to gain a deep understanding of how LLMs work.
+- Thank you author for this wonderful journey. 
 
 ## Useful Links
 - [Instruction Tuning with Loss Over Instructions](https://arxiv.org/abs/2405.14394)
@@ -27,5 +45,4 @@
 - [MMLU Paper](https://arxiv.org/abs/2009.03300)
 - [LMSYS chatbot arena](https://lmarena.ai/)
 - [AlpacaEval](https://tatsu-lab.github.io/alpaca_eval/)
-- [Ollama](https://ollama.com/)
-- [llama.cpp](https://github.com/ggml-org/llama.cpp)
+- [Preference tuning with DPO](https://github.com/rasbt/LLMs-from-scratch/tree/main/ch07/04_preference-tuning-with-dpo)

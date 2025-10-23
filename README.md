@@ -15,11 +15,13 @@
 - ✅ Chapter 4: Coding a LLM
 - ✅ Chapter 5: LLM Pretraining
 - ✅ Chapter 6: Classification Fine-tuning
-- 🧠 Chapter 7: Instruction Fune-tuning
-- ⏳ Appendix D: Enhance the Training Function
+- ✅ Chapter 7: Instruction Fune-tuning
+- 🧠 Appendix D: Enhance the Training Function
 - ⏳ Appendix E: Fune-tuning with LoRA
 
 ## Useful Links
-- [The Official GitHub Repository from the Author](https://github.com/rasbt/LLMs-from-scratch)
-- [The Author's Blog](https://magazine.sebastianraschka.com/)
+- [The Official GitHub Repository of this Book](https://github.com/rasbt/LLMs-from-scratch)
+- The Author's Blog: [Link-1](https://magazine.sebastianraschka.com/), [Link-2](https://sebastianraschka.com/blog/)
 - [The Author's Free Courses](https://sebastianraschka.com/teaching/)
+- [All Bonus Material](https://github.com/rasbt/LLMs-from-scratch?tab=readme-ov-file#bonus-material)
+- [Explore Recent Research Papers](https://arxiv.org/list/cs.LG/recent)
