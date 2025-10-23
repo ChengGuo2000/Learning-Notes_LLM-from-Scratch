@@ -18,6 +18,7 @@
 - ✅ Chapter 7: Instruction Fune-tuning
 - 🧠 Appendix D: Enhance the Training Function
 - ⏳ Appendix E: Fune-tuning with LoRA
+- ⏳ Selected Bonus Materials
 
 ## Useful Links
 - [The Official GitHub Repository of this Book](https://github.com/rasbt/LLMs-from-scratch)
