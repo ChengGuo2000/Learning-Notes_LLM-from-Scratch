@@ -16,8 +16,8 @@
 - ✅ Chapter 5: LLM Pretraining
 - ✅ Chapter 6: Classification Fine-tuning
 - ✅ Chapter 7: Instruction Fune-tuning
-- 🧠 Appendix D: Enhance the Training Function
-- ⏳ Appendix E: Fune-tuning with LoRA
+- ✅ Appendix D: Enhance the Training Function
+- 🧠 Appendix E: Fune-tuning with LoRA
 - ⏳ Selected Bonus Materials
 
 ## Useful Links
