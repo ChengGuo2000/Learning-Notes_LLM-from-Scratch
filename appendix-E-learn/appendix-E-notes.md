@@ -16,6 +16,5 @@
 - Besides reducing the number of weights to update during training, the ability to keep the **LoRA** weight matrices separate from the original model weights makes **LoRA** even more useful in practice, because it allows the pretrained model weights to remain unchanged, with the **LoRA** matrices being applied dynamically after training when using the model.
 - Keeping the **LoRA** weights separate is very useful because it enables model customization without needing to store multiple complete versions of an LLM. This reduces storage requirements and improves scalability, as only the smaller **LoRA** matrices need to be adjusted and saved when we customize LLMs for each specific customer or application.
 
-
 ## Useful Links
 - [LoRA Paper](https://arxiv.org/abs/2106.09685)
